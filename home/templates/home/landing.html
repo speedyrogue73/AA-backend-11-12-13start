@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% if name == "amirali niko" %}
+    <h1>hello {{ name }}</h1>
+{% endif %}
+
+<div>
+{% for amir in amirs %}
+    <h2>{{ amir.title }}</h2>
+    <p>{{ amir.content }}</p>
+    <small>{{ amir.is_done }}</small>
+    <hr>
+{% empty %}
+    <p>No items found.</p>
+{% endfor %}
+</div>
+{% endblock %}
