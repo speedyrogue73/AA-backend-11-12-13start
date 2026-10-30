@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    {% if request.user.is_authenticated %}
+        <div class="card p-5">
+            <h2 class="card-title">{{ amir.title }}</h2>
+            <p class="card-body">{{ amir.content }}</p>
+            <small>{% if amir.is_done %}✅{% else %}❌{% endif %}</small>
+            <small>{{ amir.created_at }}</small>
+            <div class="group-btn mt-3">
+                <a href="{% url 'update' amir.id %}" class="btn btn-success">edit</a>
+                <a href="{% url 'delete' amir.id %}" class="btn btn-danger">delete</a>
+            </div>
+        </div>
+    {% else %}
+        <div class="p-5">
+            <p>شما اجازه دیدن این مطلب را ندارید.</p>
+        </div>
+    {% endif %}
+{% endblock %}
